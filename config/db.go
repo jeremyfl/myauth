@@ -12,6 +12,7 @@ const (
 func MongoConnect() (*mgo.Session, error) {
 	var session, err = mgo.Dial(CONNECTION_NAME)
 	if err != nil {
+		panic(err.Error())
 		return nil, err
 	}
 

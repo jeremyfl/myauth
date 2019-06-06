@@ -9,7 +9,8 @@ import (
 func main() {
 	e := echo.New()
 
-	e.POST("/login", controller.LoginHandler)
+	e.GET("/user", controller.GetAllUser)
+	e.POST("/user", controller.RegisterHandler)
 
 	e.Logger.Fatal(e.Start(":1323"))
 }
