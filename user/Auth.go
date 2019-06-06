@@ -8,13 +8,9 @@ import (
 )
 
 func Login(c echo.Context) (err error) {
-	u := new(model.User)
+	var email, password string = c.FormValue("email"), c.FormValue("password")
 
-	if err = c.Bind(u); err != nil {
-		return c.JSON(http.StatusBadRequest, ErrorResponse{err.Error()})
-	}
-
-	user, err := model.FindUser(u)
+	user, err := model.FindUser(email, password)
 
 	if err != nil {
 		return c.JSON(http.StatusUnauthorized, ErrorResponse{err.Error()})

@@ -32,10 +32,10 @@ func GetUser() ([]User, error) {
 	return user, err
 }
 
-func FindUser(u *User) (User, error) {
+func FindUser(email, password string) (User, error) {
 	var user User
 
-	err := collection.Find(bson.M{"email": u.Email, "password": u.Password}).One(&user)
+	err := collection.Find(bson.M{"email": email, "password": password}).One(&user)
 
 	return user, err
 }
