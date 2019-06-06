@@ -12,5 +12,7 @@ func main() {
 	e.GET("/user", user.IndexHandler)
 	e.POST("/user", user.StoreHandler)
 
+	e.POST("/login", user.Login)
+
 	e.Logger.Fatal(e.Start(":1323"))
 }

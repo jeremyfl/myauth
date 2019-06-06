@@ -5,6 +5,5 @@ type Response struct {
 }
 
 type ErrorResponse struct {
-	Type    string `json: "type"`
 	Message string `json: "message"`
 }

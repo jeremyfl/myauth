@@ -27,7 +27,15 @@ func InsertUser(user *User) error {
 func GetUser() ([]User, error) {
 	var user []User
 
-	var err = collection.Find(bson.M{}).All(&user)
+	err := collection.Find(bson.M{}).All(&user)
+
+	return user, err
+}
+
+func FindUser(u *User) (User, error) {
+	var user User
+
+	err := collection.Find(bson.M{"email": u.Email, "password": u.Password}).One(&user)
 
 	return user, err
 }
