@@ -1,7 +1,7 @@
 package main
 
 import (
-	"myauth/controller"
+	"myauth/user"
 
 	"github.com/labstack/echo"
 )
@@ -9,8 +9,8 @@ import (
 func main() {
 	e := echo.New()
 
-	e.GET("/user", controller.GetAllUser)
-	e.POST("/user", controller.RegisterHandler)
+	e.GET("/user", user.IndexHandler)
+	e.POST("/user", user.StoreHandler)
 
 	e.Logger.Fatal(e.Start(":1323"))
 }
