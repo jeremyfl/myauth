@@ -21,14 +21,13 @@ func Login(c echo.Context) (err error) {
 
 	token := jwt.New(jwt.SigningMethodHS256)
 
-	// Set claims
 	claims := token.Claims.(jwt.MapClaims)
 	claims["name"] = user.Name
 	claims["email"] = user.Email
 	claims["level"] = user.Level
 	claims["exp"] = time.Now().Add(time.Hour * 72).Unix()
 
-	// Generate encoded token and send it as response.
+	// TODO:: replace "secret" to ENV
 	t, err := token.SignedString([]byte("secret"))
 	if err != nil {
 		return err
